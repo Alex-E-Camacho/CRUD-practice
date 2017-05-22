@@ -20,12 +20,13 @@
 <body>
   <div>
     <% if logged_in? %>
-        <a href="/users/<%=current_user.email%>"><%=current_user.email%></a>
-        <a href="/logout">Logout</a>
+        <a href="/users/<%=current_user.id%>"><%=current_user.email%></a> |
+        <a href="/logout">Logout</a> |
     <% else %>
-        <a href="/login">Login</a>
-        <a href="/users/new">Register</a><br>
+        <a href="/login">Login</a> |
+        <a href="/users/new">Register</a> |
     <% end %>
+        <a href="/channels">Channels List</a>
   </div>
   <%= yield %>
 </body>
