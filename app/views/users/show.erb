@@ -1,1 +1,11 @@
-"This is the user show erb page"
+<h1>Hello, <%=@user.first_name.capitalize%>!</h1>
+
+<h3>Subscriptions</h3>
+
+<ul>
+  <% if @user.channels %>
+     <% @user.channels.each do |channel| %>
+        <p><a href="/channels/<%=channel.id%>"><%= channel.callsign %></a> | <%= channel.name %> | $<%= channel.price_per_month%>/mo</p>
+     <% end %>
+  <% end %>
+</ul>
