@@ -3,7 +3,7 @@
 <ul>
   <% if @channels %>
   <% @channels.each do |channel|%>
-    <p><%= channel.callsign %> | <%= channel.name %> | $<%= channel.price_per_month %>/mo</p>
+    <p><a href="/channels/<%=channel.id%>"><%= channel.callsign %></a> | <%= channel.name %> | $<%= channel.price_per_month %>/mo</p>
      <% end %>
   <% end %>
 </ul>
