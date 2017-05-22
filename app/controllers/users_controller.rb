@@ -48,3 +48,15 @@ put '/users/:id' do
     erb :'/users/edit'
   end
 end
+
+delete '/users/:id' do
+  require_user
+  @user = User.find_by(id: params[:id])
+  if @user && current_user == @user
+    User.find_by(id: params[:id]).destroy
+    session.clear
+    redirect '/'
+  else
+    redirect '/login'
+  end
+end

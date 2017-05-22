@@ -18,7 +18,7 @@
   <title></title>
 </head>
 <body>
-  <div>
+  <div class="container">
     <% if logged_in? %>
         <a href="/users/<%=current_user.id%>"><%=current_user.email%></a> |
         <a href="/logout">Logout</a> |
