@@ -1,0 +1,18 @@
+<ul>
+  <% if @errors %>
+  <% @errors.each do |error|%>
+    <li><%= error %></li>
+    <% end %>
+   <% end %>
+</ul>
+
+<form action="/users/<%=current_user.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="user[first_name]">First Name:</label>
+    <input type="text" name="user[first_name]" value="<%= current_user.first_name%>">
+  <label for="user[last_name]">Last Name:</label>
+    <input type="text" name="user[last_name]" value="<%= current_user.last_name%>">
+  <label for="user[email]">Email:</label>
+    <input type="text" name="user[email]" value="<%= current_user.email%>">
+  <input type="submit" value="Save Edits">
+</form>

@@ -28,5 +28,23 @@ get '/users/:id' do
 end
 
 get '/users/:id/edit' do
-  "this is the users edit route"
+  require_user
+  @user = User.find_by(id: params[:id])
+  if @user == current_user
+    erb :'/users/edit'
+  else
+    redirect '/login'
+  end
+end
+
+put '/users/:id' do
+  require_user
+  @user = User.find_by(id: params[:id])
+  if @user == current_user
+    @user.update(params["user"])
+    redirect "/users/#{@user.id}"
+  else
+    @errors = @user.errors.full_messages
+    erb :'/users/edit'
+  end
 end
