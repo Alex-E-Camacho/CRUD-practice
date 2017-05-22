@@ -18,6 +18,15 @@ post '/users' do
 end
 
 get '/users/:id' do
+  require_user
   @user = User.find_by(id: params[:id])
-  erb :'/users/show'
+  if current_user == @user
+    erb :'/users/show'
+  else
+    redirect '/login'
+  end
+end
+
+get '/users/:id/edit' do
+  "this is the users edit route"
 end
