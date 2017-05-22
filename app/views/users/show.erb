@@ -1,6 +1,7 @@
 <h1>Hello, <%=@user.first_name.capitalize%>!</h1>
 
 <h3>Subscriptions</h3>
+($<%= @user.total_price_of_subscriptions %>/total)
 
 <ul>
   <% if @user.channels %>
