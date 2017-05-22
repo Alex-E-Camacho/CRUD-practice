@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   has_many :channels, :through => :subscriptions
 
   has_secure_password
+
+  def total_price_of_subscriptions
+    self.channels.reduce(0) { |memo, channel| memo + channel.price_per_month }
+  end
 end
