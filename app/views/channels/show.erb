@@ -3,3 +3,16 @@
 <h3>($<%=@channel.price_per_month%>/mo)</h3>
 
 <p>Subscribed: <%=@channel.subscribers.count%></p>
+
+<% if current_user  %>
+  <% if current_user.subscribed?(@channel) %>
+    <form action="/channels/<%=@channel.id%>/subscriptions" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit">Unsubscribe</button>
+    </form>
+  <% else %>
+    <form action="/channels/<%=@channel.id%>/subscriptions" method="post">
+      <button type="submit">Subscribe</button>
+    </form>
+  <% end %>
+<% end %>
